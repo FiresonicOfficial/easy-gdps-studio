@@ -1,0 +1,28 @@
+node_modules/
+dist/
+dist-renderer/
+dist-electron/
+instances/
+*.log
+.DS_Store
+
+# Do not commit copyrighted RobTop binaries; keep slot folders via .gitkeep
+client-templates/*/*/*.exe
+client-templates/*/*/*.dll
+client-templates/*/*/*.apk
+client-templates/*/*/*.dat
+client-templates/*/*/*.mp3
+client-templates/*/*/*.ogg
+client-templates/*/*/*.png
+client-templates/*/*/*.plist
+!client-templates/**/.gitkeep
+
+# Downloaded portable runtimes (re-fetched via npm run fetch-runtimes)
+resources/runtime/php/*
+!resources/runtime/php/.gitkeep
+resources/runtime/android-tools/*
+!resources/runtime/android-tools/.gitkeep
+resources/runtime/jre/*
+!resources/runtime/jre/.gitkeep
+resources/runtime/cloudflared/*
+!resources/runtime/cloudflared/.gitkeep

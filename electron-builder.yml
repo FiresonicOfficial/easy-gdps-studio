@@ -1,0 +1,41 @@
+appId: com.easygdps.studio
+productName: EasyGDPS Studio
+copyright: Copyright © 2026 EasyGDPS Studio
+directories:
+  output: dist
+  buildResources: build
+files:
+  - dist-renderer/**/*
+  - dist-electron/**/*
+  - package.json
+extraResources:
+  - from: resources/runtime
+    to: runtime
+    filter:
+      - "**/*"
+  - from: server-templates
+    to: server-templates
+    filter:
+      - "**/*"
+  - from: client-templates
+    to: client-templates
+    filter:
+      - "**/*"
+win:
+  signAndEditExecutable: false
+  target:
+    - target: nsis
+      arch:
+        - x64
+  artifactName: EasyGDPS-Setup-${version}.${ext}
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: EasyGDPS Studio
+  artifactName: EasyGDPS-Setup.exe
+  installerLanguages:
+    - en_US
+  language: "1033"
+asar: true

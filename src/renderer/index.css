@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  accent-color: #00e5ff;
+  --scrollbar-thumb: #2b3f6e;
+  --scrollbar-track: #0b1122;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #090d1a;
+  background-image:
+    radial-gradient(circle at 15% 0%, rgb(0 229 255 / 0.08), transparent 40%),
+    radial-gradient(circle at 85% 10%, rgb(168 85 247 / 0.08), transparent 42%),
+    linear-gradient(to bottom, rgb(17 24 44 / 0.35), transparent 320px);
+}
+
+/* Subtle Geometry Dash grid backdrop */
+.gd-grid-bg {
+  background-image:
+    linear-gradient(to right, rgb(36 51 89 / 0.22) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(36 51 89 / 0.22) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Native modal dialog top-layer rules & scroll containment */
+dialog:modal {
+  overscroll-behavior: contain;
+  background: transparent;
+  color: inherit;
+  border: none;
+  padding: 0;
+  max-width: min(92vw, 32rem);
+  width: 100%;
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background-color: rgb(5 8 18 / 0.78);
+  backdrop-filter: blur(4px);
+}
+
+/* Accessible tab active indicator using pseudo-element border (not color alone) */
+[role="tab"] {
+  position: relative;
+}
+
+[role="tab"][aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  border-block-end: 2px solid #00e5ff;
+}
+
+/* Custom scrollbar styling with progressive fallback */
+.gd-scroll {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+@supports not (scrollbar-color: auto) {
+  .gd-scroll {
+    scrollbar-width: auto;
+  }
+
+  .gd-scroll::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  .gd-scroll::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 9999px;
+    border: 2px solid var(--scrollbar-track);
+  }
+
+  .gd-scroll::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+}
+
+/* Focus-visible high-contrast ring */
+:focus-visible {
+  outline: 2px solid #00e5ff;
+  outline-offset: 2px;
+}
+
+/* Visually hidden helper for screen readers */
+.visually-hidden {
+  position: absolute;
+  clip-path: inset(50%);
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+}
